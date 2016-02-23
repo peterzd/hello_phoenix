@@ -8,8 +8,11 @@ defmodule HelloPhoenix.HelloController do
     render conn, "index.html"
   end
 
-  def show(conn, %{"message" => message}) do
-    render conn, "show.html", message: message
+  # 在URL里的message这个参数，会通过Map的形式传到这个action里
+  # 这里map的key值类型是一个String
+  def show(conn, %{"name" => messenger}) do
+    # 第三个参数是通过 K-V 对，把这个参数传给 view 层
+    render conn, "show.html", name: messenger
   end
 end
 
